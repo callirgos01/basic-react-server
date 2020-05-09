@@ -1,0 +1,26 @@
+{
+    "name": "react-basic-server",
+    "version": "1.0.0",
+    "description": "Basic Server For Teaching purposes",
+    "main": "server.js",
+    "license": "MIT",
+    "dependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.6",
+        "@babel/node": "^7.8.7",
+        "@babel/preset-env": "^7.9.6",
+        "axios": "^0.19.2",
+        "express": "^4.17.1",
+        "express-graphql": "^0.9.0",
+        "graphql": "^15.0.0"
+   },
+   "scripts": {
+        "build": "babel  schema.js",
+        "start": "babel-node server.js",
+        "server": "nodemon server.js"
+   },
+   "author": "Carlos Callirgos",
+   "devDependencies": {
+        "nodemon": "^2.0.3"
+   }
+ }
