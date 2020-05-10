@@ -37,17 +37,26 @@ const RootQuery = new GraphQLObjectType({
         queue: {
             type: QueueType,
             async resolve(parent, args) {
-//                var resp = await axios.get('https://callirgos.net/downloader/api?output=json&apikey=9f5509492dcad6e060f7f261004d774e&mode=queue');
-                console.log('axios get');
-                var resp = await axios.get('https://callirgos.net/downloader/api', {
-                    params:{
-                        output: 'json',
-                        apikey: '9f5509492dcad6e060f7f261004d774e',
-                        mode: 'queue'
-                    }
-                });
-                console.log(resp.data.queue);
-                return resp.data.queue;
+                let apiEntryPoint = 'https://callirgos.net/downloader/api';
+                let output = 'json';
+                let apikey = '9f5509492dcad6e060f7f261004d774e';
+                let mode = 'queue';
+                let timeout = 1000;
+                try {
+                    var resp = await axios.get(apiEntryPoint, {
+                        params:{
+                            output,
+                            apikey,
+                            mode
+                        },
+                        timeout
+                    });
+                    //console.log(resp.data.queue);
+                    return resp.data.queue;     
+                } catch(error) {
+                    //console.log("error");
+                    console.error(error);
+                }
             }
         }
     }
